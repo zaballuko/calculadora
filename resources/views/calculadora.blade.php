@@ -1,25 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<title>Calculadora</title>
-	
-</head>
-<body>
-	<h2>Esta es la calculadora de {{$nombre}}</h2>
-	<form action="/calcular" method="post">
+@extends('layouts.layout-calculadora')
+@section('title','calculadora')
+
+<!-- donde quires que vaya y lo que quieres -->
+
+	@section('content')
+	<div class="content">
+		<h2>Esta es la calculadora de {{$nombre}}</h2>
+	<form action="/calcular" method="post" class="form-group">
 			@csrf
-			Numero 1:<br>
+			<label for="exampleInputEmail1">Numero 1:</label><br>
 			<input type="number" name="numero1"><br>
-			Numero 2:<br>
+			<label for="exampleInputEmail1">Numero 2:</label>
+			<br>
 			<input type="number" name="numero2"><br>
 			<input type="hidden" name="nombre" value="{{$nombre}}">
 			<!-- metes el nombre en un hidden para guardarlo-->
 			<br>
-			<button type="radio" name="operacion" value="sumar">sumar</button>
-			<button type="radio" name="operacion" value="restar">restar</button>
-			<button type="radio" name="operacion" value="multiplicar">multiplicar</button>
-			<button type="radio" name="operacion" value="dividir">dividir</button>
+			<button type="radio" name="operacion" value="sumar" class="btn btn-primary"  class="form-control" >sumar</button>
+			<button type="radio" name="operacion" value="restar" class="btn btn-secondary"  class="form-control" >restar</button>
+			<button type="radio" name="operacion" value="multiplicar" class="btn btn-success"  class="form-control" >multiplicar</button>
+			<button type="radio" name="operacion" value="dividir" class="btn btn-warning"  class="form-control" >dividir</button>
 			<br>
 			<h3>Resultado:</h3>
 			<br> <!-- isset te devuelve un boolean -->
@@ -27,7 +27,5 @@
 			<p>{{$resultado}}</p>
 			@endif
 		</form>
-	
-
-</body>
-</html>
+	</div>
+@endsection
